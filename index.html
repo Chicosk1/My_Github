@@ -1,4 +1,5 @@
 <!doctype html>
+<link rel="stylesheet" href="assets/css/style.css">
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
@@ -54,18 +55,18 @@
       <aside class="card">
         <h2>Comandos rápidos</h2>
         <pre><code>git clone &lt;url&gt;
-                   git checkout -b feature/nova
-                   git add .
-                   git commit -m "mensagem"
-                   git push origin feature/nova
-                   # Para atualizar sua branch com main
-                   git fetch origin
-                   git merge origin/main
-                   # Resolver conflitos, depois:
-                   git add &lt;arquivo&gt;
-                   git commit
-                   git push
-        </code></pre>
+git checkout -b feature/nova
+git add .
+git commit -m "mensagem"
+git push origin feature/nova
+# Para atualizar sua branch com main
+git fetch origin
+git merge origin/main
+# Resolver conflitos, depois:
+git add &lt;arquivo&gt;
+git commit
+git push
+</code></pre>
       </aside>
 
       <section id="fluxo" class="card">
@@ -113,9 +114,8 @@
           <li>
             <strong>Atualize seu repositório local:</strong>
             <pre><code>git fetch origin
-                       git checkout feature/sua-branch
-                       git pull --rebase origin main
-            </code></pre>
+git checkout feature/sua-branch
+git pull --rebase origin main</code></pre>
             <div class="placeholder">Imagem: fetch_rebase.png</div>
             <p class="lead">O rebase traz as alterações da <code>main</code> para sua branch (mantém histórico linear). Se preferir, use <code>git merge origin/main</code>.</p>
           </li>
@@ -179,23 +179,28 @@ git commit -m "Resolve conflito: arquivo X"</code></pre>
       <section id="comandos" class="card">
         <h2>Comandos úteis (resumo)</h2>
         <pre><code># Informações
-                    git status
+git status
 
-                    # Mudar branch
-                    git checkout -b minha-branch
+# Mudar branch
+git checkout -b minha-branch
 
-                    # Mesclar
-                    git fetch origin
-                    git merge origin/main
+# Mesclar
+git fetch origin
+git merge origin/main
 
-                    # Rebase
-                    git pull --rebase origin main
+# Rebase
+git pull --rebase origin main
 
-                    # Forçar push (use com cuidado)
-                    git push --force-with-lease
-        </code></pre>
+# Forçar push (use com cuidado)
+git push --force-with-lease
+</code></pre>
       </section>
+
     </main>
+
+    <footer>
+      <div>Feito para seu trabalho — Substitua imagens nos placeholders por suas capturas.</div>
+    </footer>
   </div>
 </body>
 </html>
