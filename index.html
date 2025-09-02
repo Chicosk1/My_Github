@@ -3,68 +3,108 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Git & GitHub — Conceitos, Fluxo e Conflitos</title>
+  <title>Git & GitHub — Conceitos, Fluxo e Passo a Passo (Conflitos)</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="wrap">
-        <header>
-            <div class="logo">GIT</div>
-            <div>
-                <h1>Git & GitHub — Conceitos, Fluxo e Passo a Passo</h1>
-                <p class="lead">Página estática com explicações, fluxo recomendado e passo a passo para resolução de conflitos.</p>
+  <div class="wrap">
+    <header>
+      <div class="logo">GIT</div>
+      <div>
+        <h1>Git & GitHub — Conceitos, Fluxo e Passo a Passo</h1>
+        <p class="lead">Página estática com explicações, fluxo recomendado e passo a passo para resolução de conflitos (espaço para imagens).</p>
+      </div>
+    </header>
+
+    <nav>
+      <a class="btn" href="#conceitos">Conceitos</a>
+      <a class="btn" href="#fluxo">Fluxo Git/GitHub</a>
+      <a class="btn" href="#passo-a-passo">Passo a passo (conflitos)</a>
+      <a class="btn" href="#comandos">Comandos úteis</a>
+    </nav>
+
+    <main>
+      <!-- Conteúdo principal -->
+      <section id="conceitos" class="card">
+        <h2>Conceitos essenciais</h2>
+        <dl>
+          <dt>Repositório (repo)</dt>
+          <dd>Local onde o histórico de versões do projeto é armazenado. Pode ser local (máquina) ou remoto (GitHub).</dd>
+
+          <dt>Commit</dt>
+          <dd>Uma 'foto' do estado do projeto. Contém autor, mensagem e um hash único.</dd>
+
+          <dt>Branch</dt>
+          <dd>Linha de desenvolvimento isolada. Ex.: <code>main</code>, <code>feature/login</code>.</dd>
+
+          <dt>Merge</dt>
+          <dd>Operação que junta o histórico de duas branches.</dd>
+
+          <dt>Pull request (PR)</dt>
+          <dd>Mecanismo do GitHub para revisar/mesclar mudanças entre branches remotas.</dd>
+
+          <dt>Clone / Fork</dt>
+          <dd><strong>Clone:</strong> copia do repo remoto para seu ambiente. <strong>Fork:</strong> cópia do repo para sua conta no GitHub.</dd>
+
+          <dt>Remote</dt>
+          <dd>Referência para repositório remoto (ex.: <code>origin</code>).</dd>
+        </dl>
+      </section>
+
+      <aside class="card">
+        <h2>Comandos rápidos</h2>
+        <pre><code>git clone &lt;url&gt;
+                   git checkout -b feature/nova
+                   git add .
+                   git commit -m "mensagem"
+                   git push origin feature/nova
+                   # Para atualizar sua branch com main
+                   git fetch origin
+                   git merge origin/main
+                   # Resolver conflitos, depois:
+                   git add &lt;arquivo&gt;
+                   git commit
+                   git push
+        </code></pre>
+      </aside>
+
+      <section id="fluxo" class="card">
+        <h2>Fluxo recomendado (ex.: Feature Branch Workflow)</h2>
+        <p class="lead">Um fluxo simples e comum para times pequenos/medianos.</p>
+        <div class="flow">
+          <div class="diagram" aria-hidden="true">
+            <!-- Espaço para imagem/diagrama. Troque pelo seu SVG ou imagem -->
+            <div style="text-align:center">
+              <div style="font-weight:700;color:var(--muted)">[Aqui você pode inserir um diagrama do fluxo]</div>
+              <small style="color:var(--muted)">Ex.: main ← PR ← feature branches → revisão → merge</small>
             </div>
-        </header>
+          </div>
 
-        <nav>
-            <a class="btn" href="#conceitos">Conceitos</a>
-            <a class="btn" href="#fluxo">Fluxo Git/GitHub</a>
-            <a class="btn" href="#passo-a-passo">Passo a passo (conflitos)</a>
-            <a class="btn" href="#comandos">Comandos úteis</a>
-        </nav>
+          <div class="steps">
+            <div class="step">
+              <strong>1. Criar branch de feature</strong>
+              <div class="placeholder">Imagem: criar-branch.png</div>
+              <p class="lead">Isola a alteração para facilitar revisão.</p>
+            </div>
 
-        <main>
-        <!-- Conteúdo principal -->
-            <section id="conceitos" class="card">
-                    <h2>Conceitos essenciais</h2>
-                <dl>
-                    <dt>Repositório (repo)</dt>
-                    <dd>Local onde o histórico de versões do projeto é armazenado. Pode ser local (máquina) ou remoto (GitHub).</dd>
+            <div class="step">
+              <strong>2. Desenvolver e commitar</strong>
+              <div class="placeholder">Imagem: commits.png</div>
+            </div>
 
-                    <dt>Commit</dt>
-                    <dd>Uma 'foto' do estado do projeto. Contém autor, mensagem e um hash único.</dd>
+            <div class="step">
+              <strong>3. Push e abrir PR</strong>
+              <div class="placeholder">Imagem: pr.png</div>
+            </div>
 
-                    <dt>Branch</dt>
-                    <dd>Linha de desenvolvimento isolada. Ex.: main, feature/login.</dd>
-
-                    <dt>Merge</dt>
-                    <dd>Operação que junta o histórico de duas branches.</dd>
-
-                    <dt>Pull request (PR)</dt>
-                    <dd>Mecanismo do GitHub para revisar/mesclar mudanças entre branches remotas.</dd>
-
-                    <dt>Clone / Fork</dt>
-                    <dd><strong>Clone:</strong> copia do repo remoto para seu ambiente. <strong>Fork:</strong> cópia do repo para sua conta no GitHub.</dd>
-
-                    <dt>Remote</dt>
-                    <dd>Referência para repositório remoto (ex.: origin).</dd>
-                </dl>
-            </section>
-
-            <aside class="card">
-                <h2>Comandos rápidos</h2>
-                <pre><code>git clone &lt;url&gt;
-                    git checkout -b feature/nova
-                    git add .
-                    git commit -m "mensagem"
-                    git push origin feature/nova
-                    # Para atualizar sua branch com main
-                    git fetch origin
-                    git merge origin/main
-                    # Resolver conflitos, depois:
-                    git add &lt;arquivo&gt;
-                    git commit
-                    git push
-                </code></pre>
-            </aside>
-        </main>
+            <div class="step">
+              <strong>4. Revisão e merge</strong>
+              <div class="placeholder">Imagem: review.png</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
+</html>
