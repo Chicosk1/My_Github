@@ -21,4 +21,50 @@
             <a class="btn" href="#passo-a-passo">Passo a passo (conflitos)</a>
             <a class="btn" href="#comandos">Comandos úteis</a>
         </nav>
+
+        <main>
+        <!-- Conteúdo principal -->
+            <section id="conceitos" class="card">
+                    <h2>Conceitos essenciais</h2>
+                <dl>
+                    <dt>Repositório (repo)</dt>
+                    <dd>Local onde o histórico de versões do projeto é armazenado. Pode ser local (máquina) ou remoto (GitHub).</dd>
+
+                    <dt>Commit</dt>
+                    <dd>Uma 'foto' do estado do projeto. Contém autor, mensagem e um hash único.</dd>
+
+                    <dt>Branch</dt>
+                    <dd>Linha de desenvolvimento isolada. Ex.: main, feature/login.</dd>
+
+                    <dt>Merge</dt>
+                    <dd>Operação que junta o histórico de duas branches.</dd>
+
+                    <dt>Pull request (PR)</dt>
+                    <dd>Mecanismo do GitHub para revisar/mesclar mudanças entre branches remotas.</dd>
+
+                    <dt>Clone / Fork</dt>
+                    <dd><strong>Clone:</strong> copia do repo remoto para seu ambiente. <strong>Fork:</strong> cópia do repo para sua conta no GitHub.</dd>
+
+                    <dt>Remote</dt>
+                    <dd>Referência para repositório remoto (ex.: origin).</dd>
+                </dl>
+            </section>
+
+            <aside class="card">
+                <h2>Comandos rápidos</h2>
+                <pre><code>git clone &lt;url&gt;
+                    git checkout -b feature/nova
+                    git add .
+                    git commit -m "mensagem"
+                    git push origin feature/nova
+                    # Para atualizar sua branch com main
+                    git fetch origin
+                    git merge origin/main
+                    # Resolver conflitos, depois:
+                    git add &lt;arquivo&gt;
+                    git commit
+                    git push
+                </code></pre>
+            </aside>
+        </main>
 </body>
