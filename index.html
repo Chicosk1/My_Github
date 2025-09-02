@@ -104,6 +104,77 @@
           </div>
         </div>
       </section>
+
+      <section id="passo-a-passo" class="card">
+        <h2>Passo a passo: Resolver conflitos de merge</h2>
+        <p>Use este espaço para colar imagens de cada passo (ex.: captura do VS Code, terminal, arquivo com marcações). Substitua os placeholders <code>&lt;img src="images/…"&gt;</code> pelas suas imagens.</p>
+
+        <ol>
+          <li>
+            <strong>Atualize seu repositório local:</strong>
+            <pre><code>git fetch origin
+                       git checkout feature/sua-branch
+                       git pull --rebase origin main
+            </code></pre>
+            <div class="placeholder">Imagem: fetch_rebase.png</div>
+            <p class="lead">O rebase traz as alterações da <code>main</code> para sua branch (mantém histórico linear). Se preferir, use <code>git merge origin/main</code>.</p>
+          </li>
+
+          <li>
+            <strong>Tente mesclar (se não usou rebase):</strong>
+            <pre><code>git merge origin/main</code></pre>
+            <div class="placeholder">Imagem: merge_attempt.png</div>
+            <p class="lead">Se houver conflitos, o Git vai parar e sinalizar os arquivos.</p>
+          </li>
+
+          <li>
+            <strong>Identifique arquivos com conflito:</strong>
+            <pre><code>git status</code></pre>
+            <div class="placeholder">Imagem: git_status.png</div>
+          </li>
+
+          <li>
+            <strong>Abra os arquivos e resolva conflitos:</strong>
+            <pre><code>&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+(sua versão)
+=======
+(versão de origin/main)
+&gt;&gt;&gt;&gt;&gt;&gt; origin/main</code></pre>
+            <div class="placeholder">Imagem: editor_conflito.png</div>
+            <p class="lead">Remova os marcadores e edite para a versão final desejada.</p>
+          </li>
+
+          <li>
+            <strong>Marque como resolvido e commit:</strong>
+            <pre><code>git add &lt;arquivo-resolvido&gt;
+git commit -m "Resolve conflito: arquivo X"</code></pre>
+            <div class="placeholder">Imagem: git_add_commit.png</div>
+          </li>
+
+          <li>
+            <strong>Atualize o remoto:</strong>
+            <pre><code>git push origin feature/sua-branch</code></pre>
+            <div class="placeholder">Imagem: push.png</div>
+            <p class="lead">Se você usou <code>rebase</code>, pode ser necessário forçar o push: <code>git push --force-with-lease</code> (use com cautela).</p>
+          </li>
+
+          <li>
+            <strong>Finalize o PR no GitHub</strong>
+            <div class="placeholder">Imagem: finalizar_pr.png</div>
+            <p class="lead">Verifique checks, reviews, e faça o merge quando tudo estiver ok.</p>
+          </li>
+        </ol>
+
+        <aside style="margin-top:12px;color:var(--muted)">
+          <strong>Dicas rápidas:</strong>
+          <ul>
+            <li>Faça commits pequenos e mensagens descritivas.</li>
+            <li>Atualize sua branch com frequência para reduzir conflitos.</li>
+            <li>Use <code>--force-with-lease</code> em vez de <code>--force</code> para pushes após rebase.</li>
+            <li>Se o conflito for complexo, crie uma branch de apoio para isolar a resolução.</li>
+          </ul>
+        </aside>
+      </section>
     </main>
   </div>
 </body>
