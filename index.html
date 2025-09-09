@@ -1,19 +1,21 @@
-<!doctype html>
-<link rel="stylesheet" href="assets/css/style.css">
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Git & GitHub — Conceitos, Fluxo e Passo a Passo (Conflitos)</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <div class="wrap">
+
     <header>
       <div class="logo">GIT</div>
       <div>
         <h1>Git & GitHub — Conceitos, Fluxo e Passo a Passo</h1>
-        <p class="lead">Página estática com explicações, fluxo recomendado e passo a passo para resolução de conflitos (espaço para imagens).</p>
+        <p class="lead">
+          Página com explicações, fluxo recomendado e passo a passo para resolução de conflitos (espaço para imagens).
+        </p>
       </div>
     </header>
 
@@ -25,7 +27,7 @@
     </nav>
 
     <main>
-      <!-- Conteúdo principal -->
+
       <section id="conceitos" class="card">
         <h2>Conceitos essenciais</h2>
         <dl>
@@ -33,7 +35,7 @@
           <dd>Local onde o histórico de versões do projeto é armazenado. Pode ser local (máquina) ou remoto (GitHub).</dd>
 
           <dt>Commit</dt>
-          <dd>Uma 'foto' do estado do projeto. Contém autor, mensagem e um hash único.</dd>
+          <dd>Uma "foto" do estado do projeto. Contém autor, mensagem e um hash único.</dd>
 
           <dt>Branch</dt>
           <dd>Linha de desenvolvimento isolada. Ex.: <code>main</code>, <code>feature/login</code>.</dd>
@@ -45,7 +47,7 @@
           <dd>Mecanismo do GitHub para revisar/mesclar mudanças entre branches remotas.</dd>
 
           <dt>Clone / Fork</dt>
-          <dd><strong>Clone:</strong> copia do repo remoto para seu ambiente. <strong>Fork:</strong> cópia do repo para sua conta no GitHub.</dd>
+          <dd><strong>Clone:</strong> cópia do repo remoto para seu ambiente. <strong>Fork:</strong> cópia do repo para sua conta no GitHub.</dd>
 
           <dt>Remote</dt>
           <dd>Referência para repositório remoto (ex.: <code>origin</code>).</dd>
@@ -59,48 +61,56 @@ git checkout -b feature/nova
 git add .
 git commit -m "mensagem"
 git push origin feature/nova
+
 # Para atualizar sua branch com main
 git fetch origin
 git merge origin/main
+
 # Resolver conflitos, depois:
 git add &lt;arquivo&gt;
 git commit
-git push
-</code></pre>
+git push</code></pre>
       </aside>
 
       <section id="fluxo" class="card">
         <h2>Fluxo recomendado (ex.: Feature Branch Workflow)</h2>
         <p class="lead">Um fluxo simples e comum para times pequenos/medianos.</p>
+
         <div class="flow">
           <div class="diagram" aria-hidden="true">
-            <!-- Espaço para imagem/diagrama. Troque pelo seu SVG ou imagem -->
-            <div style="text-align:center">
-              <div style="font-weight:700;color:var(--muted)">[Aqui você pode inserir um diagrama do fluxo]</div>
-              <small style="color:var(--muted)">Ex.: main ← PR ← feature branches → revisão → merge</small>
+            <div class="diagram-container">
+              <img src="assets/img/diagrama.png" alt="Diagrama do fluxo Git" class="diagram-img">
+              <small>Ex.: main ← PR ← feature branches → revisão → merge</small>
             </div>
           </div>
 
           <div class="steps">
             <div class="step">
               <strong>1. Criar branch de feature</strong>
-              <div class="placeholder">Imagem: criar-branch.png</div>
-              <p class="lead">Isola a alteração para facilitar revisão.</p>
+              <div class="placeholder">
+                <img src="assets/img/criar-branch.png" alt="Criar Branch">
+              </div>
             </div>
 
             <div class="step">
               <strong>2. Desenvolver e commitar</strong>
-              <div class="placeholder">Imagem: commits.png</div>
+              <div class="placeholder">
+                <img src="assets/img/commits.png" alt="Commitar mudanças">
+              </div>
             </div>
 
             <div class="step">
               <strong>3. Push e abrir PR</strong>
-              <div class="placeholder">Imagem: pr.png</div>
+              <div class="placeholder">
+                <img src="assets/img/pr.png" alt="Abrir Pull Request">
+              </div>
             </div>
 
             <div class="step">
-              <strong>4. Revisão e merge</strong>
-              <div class="placeholder">Imagem: review.png</div>
+              <strong>4. Merge</strong>
+              <div class="placeholder">
+                <img src="assets/img/merge.png" alt="Merge das alterações">
+              </div>
             </div>
           </div>
         </div>
@@ -108,29 +118,34 @@ git push
 
       <section id="passo-a-passo" class="card">
         <h2>Passo a passo: Resolver conflitos de merge</h2>
-        <p>Use este espaço para colar imagens de cada passo (ex.: captura do VS Code, terminal, arquivo com marcações). Substitua os placeholders <code>&lt;img src="images/…"&gt;</code> pelas suas imagens.</p>
 
         <ol>
           <li>
             <strong>Atualize seu repositório local:</strong>
-            <pre><code>git fetch origin
+            <pre><code>git fetch
 git checkout feature/sua-branch
-git pull --rebase origin main</code></pre>
-            <div class="placeholder">Imagem: fetch_rebase.png</div>
-            <p class="lead">O rebase traz as alterações da <code>main</code> para sua branch (mantém histórico linear). Se preferir, use <code>git merge origin/main</code>.</p>
+git pull origin main --rebase
+git push origin feature/sua-branch --force-with-lease</code></pre>
+            <div class="placeholder">
+              <img src="assets/img/processo-de-rebase.png" alt="Processo de Rebase">
+            </div>
+            <p class="lead">
+              O rebase traz as alterações da <code>main</code> para sua branch (mantém histórico linear). Se preferir, use <code>git merge origin/main</code>.
+            </p>
           </li>
 
           <li>
             <strong>Tente mesclar (se não usou rebase):</strong>
             <pre><code>git merge origin/main</code></pre>
-            <div class="placeholder">Imagem: merge_attempt.png</div>
             <p class="lead">Se houver conflitos, o Git vai parar e sinalizar os arquivos.</p>
           </li>
 
           <li>
             <strong>Identifique arquivos com conflito:</strong>
             <pre><code>git status</code></pre>
-            <div class="placeholder">Imagem: git_status.png</div>
+            <div class="placeholder">
+              <img src="assets/img/status.png" alt="Status da Branch">
+            </div>
           </li>
 
           <li>
@@ -140,7 +155,9 @@ git pull --rebase origin main</code></pre>
 =======
 (versão de origin/main)
 &gt;&gt;&gt;&gt;&gt;&gt; origin/main</code></pre>
-            <div class="placeholder">Imagem: editor_conflito.png</div>
+            <div class="placeholder">
+              <img src="assets/img/conflito.png" alt="Exemplo de conflitos">
+            </div>
             <p class="lead">Remova os marcadores e edite para a versão final desejada.</p>
           </li>
 
@@ -148,24 +165,21 @@ git pull --rebase origin main</code></pre>
             <strong>Marque como resolvido e commit:</strong>
             <pre><code>git add &lt;arquivo-resolvido&gt;
 git commit -m "Resolve conflito: arquivo X"</code></pre>
-            <div class="placeholder">Imagem: git_add_commit.png</div>
           </li>
 
           <li>
             <strong>Atualize o remoto:</strong>
             <pre><code>git push origin feature/sua-branch</code></pre>
-            <div class="placeholder">Imagem: push.png</div>
-            <p class="lead">Se você usou <code>rebase</code>, pode ser necessário forçar o push: <code>git push --force-with-lease</code> (use com cautela).</p>
-          </li>
-
-          <li>
-            <strong>Finalize o PR no GitHub</strong>
-            <div class="placeholder">Imagem: finalizar_pr.png</div>
-            <p class="lead">Verifique checks, reviews, e faça o merge quando tudo estiver ok.</p>
+            <div class="placeholder">
+              <img src="assets/img/pr.png" alt="Push das mudanças">
+            </div>
+            <p class="lead">
+              Se você usou <code>rebase</code>, pode ser necessário forçar o push: <code>git push --force-with-lease</code> (use com cautela).
+            </p>
           </li>
         </ol>
 
-        <aside style="margin-top:12px;color:var(--muted)">
+        <aside>
           <strong>Dicas rápidas:</strong>
           <ul>
             <li>Faça commits pequenos e mensagens descritivas.</li>
@@ -192,15 +206,15 @@ git merge origin/main
 git pull --rebase origin main
 
 # Forçar push (use com cuidado)
-git push --force-with-lease
-</code></pre>
+git push --force-with-lease</code></pre>
       </section>
 
     </main>
 
     <footer>
-      <div>Feito para seu trabalho — Substitua imagens nos placeholders por suas capturas.</div>
+      <p>Trabalho de HTML estático, explicando os processos do Git & GitHub.</p>
     </footer>
+
   </div>
 </body>
 </html>

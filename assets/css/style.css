@@ -111,9 +111,11 @@ code {
 }
 
 .flow {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: block;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 16px;
 }
 
 .diagram {
@@ -125,9 +127,32 @@ code {
   align-items: center;
   justify-content: center;
   min-height: 160px;
+  margin-bottom: 16px;
+  flex: 1 1 250px;
+  max-width: 400px;
 }
 
+.diagram-container {
+  text-align: center;      /* centraliza horizontal */
+}
+
+.diagram-img {
+  max-width: 100%;         /* evita que estoure da largura do container */
+  height: auto;            /* mantém proporção */
+  display: block;
+  margin: 0 auto 10px auto; /* centraliza e dá espaçamento abaixo */
+}
+
+.diagram-container small {
+  color: var(--muted);
+  display: block;
+  margin-top: 5px;
+}
+
+
 .steps {
+  flex: 2 1 300px;          
+  max-width: 600px; 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 12px;
@@ -137,6 +162,29 @@ code {
   background: rgba(255, 255, 255, 0.01);
   padding: 12px;
   border-radius: 10px;
+}
+
+.step img {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px dashed rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.03), transparent);
+}
+
+#passo-a-passo .placeholder {
+  height: auto; /* deixa crescer conforme a imagem */
+}
+
+#passo-a-passo .placeholder img {
+  width: 100%;        /* ocupa toda a largura disponível */
+  height: auto;       /* mantém proporção */
+  max-height: 400px;  /* opcional: limita o tamanho máximo */
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px dashed rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.03), transparent);
 }
 
 .placeholder {
@@ -149,6 +197,11 @@ code {
   align-items: center;
   justify-content: center;
   color: var(--muted);
+}
+
+.placeholder img:hover {
+  transform: scale(2.5); /* aumenta 1.5x */
+  cursor: zoom-in;
 }
 
 footer {
