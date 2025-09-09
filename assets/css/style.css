@@ -133,14 +133,14 @@ code {
 }
 
 .diagram-container {
-  text-align: center;      /* centraliza horizontal */
+  text-align: center;
 }
 
 .diagram-img {
-  max-width: 100%;         /* evita que estoure da largura do container */
-  height: auto;            /* mantém proporção */
+  max-width: 100%;
+  height: auto;
   display: block;
-  margin: 0 auto 10px auto; /* centraliza e dá espaçamento abaixo */
+  margin: 0 auto 10px auto;
 }
 
 .diagram-container small {
@@ -174,13 +174,13 @@ code {
 }
 
 #passo-a-passo .placeholder {
-  height: auto; /* deixa crescer conforme a imagem */
+  height: auto;
 }
 
 #passo-a-passo .placeholder img {
-  width: 100%;        /* ocupa toda a largura disponível */
-  height: auto;       /* mantém proporção */
-  max-height: 400px;  /* opcional: limita o tamanho máximo */
+  width: 100%;
+  height: auto;
+  max-height: 400px;
   object-fit: contain;
   border-radius: 8px;
   border: 2px dashed rgba(255, 255, 255, 0.03);
@@ -200,7 +200,7 @@ code {
 }
 
 .placeholder img:hover {
-  transform: scale(2.5); /* aumenta 1.5x */
+  transform: scale(2.5);
   cursor: zoom-in;
 }
 
